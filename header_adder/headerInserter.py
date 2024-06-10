@@ -80,5 +80,5 @@ class HeaderInserter(IHeaderInserter):
 
     def _remove_header(self, file_lines: list[str], comment: str, shebang: bool) -> None:
         start = 1 if shebang else 0
-        while file_lines[start].startswith(comment) or file_lines[start] == '\n':
+        while len(file_lines) > start and (file_lines[start].startswith(comment) or file_lines[start] == '\n'):
             file_lines.pop(start)
